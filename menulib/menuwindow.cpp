@@ -7,8 +7,6 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QPushButton>
-#include "common/cssconst.h"
-#include "common/uiconst.h"
 #include "menulib/menuheader.h"
 
 const int BAD_INDEX = -1;
@@ -21,7 +19,6 @@ MenuWindow::MenuWindow(App& app, const bool top) :
     setEscapeKeyCanAbort(!top, true);
 
     loadStyleSheet();
-    setObjectName(cssconst::MENU_WINDOW_OUTER_OBJECT);
 
     // ------------------------------------------------------------------------
     // Layout
@@ -51,14 +48,13 @@ MenuWindow::MenuWindow(App& app, const bool top) :
     */
 
     auto dummy_layout = new QVBoxLayout();
-    dummy_layout->setContentsMargins(uiconst::NO_MARGINS);
+    dummy_layout->setContentsMargins(0, 0, 0, 0);
     setLayout(dummy_layout);
     auto dummy_widget = new QWidget();  // doesn't need to be BaseWidget; contains scrolling list
-    dummy_widget->setObjectName(cssconst::MENU_WINDOW_BACKGROUND);
     dummy_layout->addWidget(dummy_widget);
 
     m_mainlayout = new QVBoxLayout();
-    m_mainlayout->setContentsMargins(uiconst::NO_MARGINS);
+    m_mainlayout->setContentsMargins(0, 0, 0, 0);
     dummy_widget->setLayout(m_mainlayout);
 }
 

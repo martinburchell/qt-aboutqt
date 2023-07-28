@@ -21,7 +21,6 @@
 #pragma once
 
 #include <QWidget>
-#include "common/gui_defines.h"
 
 
 class BaseWidget : public QWidget

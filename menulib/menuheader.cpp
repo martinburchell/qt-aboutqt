@@ -25,9 +25,6 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include "common/cssconst.h"
-#include "common/uiconst.h"
-#include "common/varconst.h"
 #include "widgets/basewidget.h"
 
 MenuHeader::MenuHeader(QWidget* parent,
@@ -72,7 +69,6 @@ MenuHeader::MenuHeader(QWidget* parent,
     // - Title
     m_title_label = new QLabel(title);
     m_title_label->setAlignment(text_align);
-    m_title_label->setObjectName(cssconst::MENU_WINDOW_TITLE);
     toprowlayout->addWidget(m_title_label, 0, text_align);
 
     // Spacing

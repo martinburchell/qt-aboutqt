@@ -29,7 +29,6 @@
 #include <QSize>
 #include <QUrl>
 #include "core/app.h"
-#include "common/cssconst.h"
 #include "menulib/menuproxy.h"
 #include "menulib/menuwindow.h"
 
@@ -126,7 +125,6 @@ QWidget* MenuItem::rowWidget(App& app) const
 
     auto title = new QLabel(m_title);
     title->setAlignment(text_align);
-    title->setObjectName(cssconst::MENU_ITEM_TITLE);
     textlayout->addWidget(title);
     rowlayout->addLayout(textlayout);
     rowlayout->addStretch();

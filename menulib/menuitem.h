@@ -24,7 +24,6 @@
 #include <QCoreApplication>  // for Q_DECLARE_TR_FUNCTIONS
 #include <QSharedPointer>
 #include <QString>
-#include "common/aliases_camcops.h"
 #include "menulib/menuproxy.h"
 
 class App;

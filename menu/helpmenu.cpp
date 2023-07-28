@@ -19,7 +19,6 @@
 */
 
 #include "helpmenu.h"
-#include "common/uiconst.h"
 #include "menulib/menuitem.h"
 
 #include <QMessageBox>

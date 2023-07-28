@@ -417,17 +417,7 @@ android {
 # =============================================================================
 
 SOURCES += \
-    common/appstrings.cpp \
-    common/cssconst.cpp \
-    common/dbconst.cpp \
     common/dpi.cpp \
-    common/globals.cpp \
-    common/platform.cpp \
-    common/textconst.cpp \
-    common/uiconst.cpp \
-    common/urlconst.cpp \
-    common/varconst.cpp \
-    common/widgetconst.cpp \
     core/app.cpp \
     lib/errorfunc.cpp \
     main.cpp \
@@ -441,22 +431,7 @@ SOURCES += \
     widgets/openablewidget.cpp
 
 HEADERS += \
-    common/aliases_qt.h \
-    common/appstrings.h \
-    common/colourdefs.h \
-    common/cssconst.h \
-    common/dbconst.h \
-    common/design_defines.h \
     common/dpi.h \
-    common/globals.h \
-    common/gui_defines.h \
-    common/platform.h \
-    common/preprocessor_aid.h \
-    common/textconst.h \
-    common/uiconst.h \
-    common/urlconst.h \
-    common/varconst.h \
-    common/widgetconst.h \
     core/app.h \
     lib/errorfunc.h \
     menu/helpmenu.h \

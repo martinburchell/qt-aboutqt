@@ -21,7 +21,6 @@
 #include "mainmenu.h"
 #include <QDebug>
 #include <QSharedPointer>
-#include "common/uiconst.h"
 #include "core/app.h"
 #include "menulib/menuitem.h"
 

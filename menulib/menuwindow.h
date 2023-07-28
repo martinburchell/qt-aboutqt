@@ -61,9 +61,6 @@ public:
     // Returns the zero-based index of the currently selected item.
     int currentIndex() const;
 
-    // Returns the patient instance represented by the currently selected item.
-    PatientPtr currentPatient() const;
-
     // Catch generic events
     virtual bool event(QEvent* e) override;
 

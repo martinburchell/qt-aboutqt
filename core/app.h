@@ -24,8 +24,6 @@
 #include <QPointer>
 #include <QSharedPointer>
 #include <QStack>
-#include "common/textconst.h"
-#include "common/uiconst.h"  // for FontSize
 class IdPolicy;
 class OpenableWidget;
 class QMainWindow;

@@ -48,15 +48,6 @@
 #include <QTranslator>
 #include <QUrl>
 #include <QUuid>
-#include "common/appstrings.h"
-#include "common/dbconst.h"  // for NONEXISTENT_PK
-#include "common/design_defines.h"
-#include "common/languages.h"
-#include "common/platform.h"
-#include "common/preprocessor_aid.h"
-#include "common/textconst.h"
-#include "common/uiconst.h"
-#include "common/varconst.h"
 #include "lib/errorfunc.h"
 #include "menu/mainmenu.h"
 
@@ -324,44 +315,24 @@ void App::leaveFullscreen()
     // setVisible(true);
 
     // So, how to return to maximized mode from fullscreen?
-    if (platform::PLATFORM_WINDOWS) {
-        // Under Windows, this works:
-        m_p_main_window->ensurePolished();
-        Qt::WindowStates new_state = (
-            (
-                old_state &
-                // Flags to turn off:
-                ~(Qt::WindowMinimized | Qt::WindowMaximized | Qt::WindowFullScreen)
-            ) |
-            // Flags to turn on:
-            (m_maximized_before_fullscreen ? Qt::WindowMaximized : Qt::WindowNoState)
-            // ... Qt::WindowNoState is zero, i.e. no flag
-        );
+    // Under Linux, the method above doesn't; that takes it to normal mode.
+    // Under Linux, showMaximized() also takes it to normal mode!
+    // But under Linux, calling showNormal() then showMaximized() immediately
+    // does work.
+    if (m_maximized_before_fullscreen) {
 #ifdef DEBUG_SCREEN_STACK
-        qDebug() << Q_FUNC_INFO << "calling setWindowState() with:" << new_state;
+        qDebug() << Q_FUNC_INFO << "calling showMaximized() then showMaximized()";
 #endif
-        m_p_main_window->setWindowState(new_state);
-        m_p_main_window->setVisible(true);
+        // Under Linux, if you start with a fullscreen window and call
+        // showMaximized(), it goes to normal mode. Also if you do this:
+        // But this works:
+        m_p_main_window->showNormal();
+        m_p_main_window->showMaximized();
     } else {
-        // Under Linux, the method above doesn't; that takes it to normal mode.
-        // Under Linux, showMaximized() also takes it to normal mode!
-        // But under Linux, calling showNormal() then showMaximized() immediately
-        // does work.
-        if (m_maximized_before_fullscreen) {
 #ifdef DEBUG_SCREEN_STACK
-            qDebug() << Q_FUNC_INFO << "calling showMaximized() then showMaximized()";
+        qDebug() << Q_FUNC_INFO << "calling showNormal()";
 #endif
-            // Under Linux, if you start with a fullscreen window and call
-            // showMaximized(), it goes to normal mode. Also if you do this:
-            // But this works:
-            m_p_main_window->showNormal();
-            m_p_main_window->showMaximized();
-        } else {
-#ifdef DEBUG_SCREEN_STACK
-            qDebug() << Q_FUNC_INFO << "calling showNormal()";
-#endif
-            m_p_main_window->showNormal();
-        }
+        m_p_main_window->showNormal();
     }
 
     // Done.
