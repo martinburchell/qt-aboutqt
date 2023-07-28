@@ -30,13 +30,8 @@
 #include <QUrl>
 #include "core/app.h"
 #include "common/cssconst.h"
-#include "common/uiconst.h"
 #include "menulib/menuproxy.h"
 #include "menulib/menuwindow.h"
-
-const int STRETCH_2COL_TIMESTAMP = 2;
-const int STRETCH_2COL_SUMMARY = 8;
-
 
 
 MenuItem::MenuItem(const QString& title, const MenuItem::ActionFunction& func,
@@ -113,7 +108,6 @@ QWidget* MenuItem::rowWidget(App& app) const
 {
     Q_UNUSED(app)
     Qt::Alignment text_align = Qt::AlignLeft | Qt::AlignVCenter;
-    QSizePolicy sp_icon(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     auto row = new BaseWidget();
     auto rowlayout = new QHBoxLayout();
