@@ -20,6 +20,7 @@
 
 #include "mainmenu.h"
 #include <QDebug>
+#include <QMessageBox>
 #include <QSharedPointer>
 #include "core/app.h"
 #include "menulib/menuitem.h"
@@ -41,6 +42,12 @@ QString MainMenu::title() const
 void MainMenu::makeItems()
 {
     m_items = {
-        MenuItem(MenuProxyPtr(new MenuProxy<HelpMenu>), m_app),
+        MenuItem(tr("About Qt"),
+                 std::bind(&MainMenu::aboutQt, this)),
     };
+}
+
+void MainMenu::aboutQt()
+{
+    QMessageBox::aboutQt(this);
 }

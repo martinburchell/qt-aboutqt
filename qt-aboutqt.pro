@@ -421,7 +421,6 @@ SOURCES += \
     core/app.cpp \
     lib/errorfunc.cpp \
     main.cpp \
-    menu/helpmenu.cpp \
     menu/mainmenu.cpp \
     menulib/menuheader.cpp \
     menulib/menuitem.cpp \
@@ -434,7 +433,6 @@ HEADERS += \
     common/dpi.h \
     core/app.h \
     lib/errorfunc.h \
-    menu/helpmenu.h \
     menu/mainmenu.h \
     menulib/menuheader.h \
     menulib/menuitem.h \
