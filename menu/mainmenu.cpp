@@ -25,8 +25,6 @@
 #include "core/app.h"
 #include "menulib/menuitem.h"
 
-#include "menu/helpmenu.h"
-
 
 MainMenu::MainMenu(App& app) : MenuWindow(app, true)
 {
