@@ -27,7 +27,7 @@ QWidget* MenuItem::rowWidget(App& app) const
     Q_UNUSED(app)
     Qt::Alignment text_align = Qt::AlignLeft | Qt::AlignVCenter;
 
-    auto row = new BaseWidget();
+    auto row = new QWidget();
     auto rowlayout = new QHBoxLayout();
     row->setLayout(rowlayout);
 
