@@ -6,7 +6,6 @@
 #include <QMessageBox>
 #include <QSharedPointer>
 #include "core/app.h"
-#include "menulib/menuitem.h"
 
 
 MainMenu::MainMenu()
@@ -44,23 +43,33 @@ void MainMenu::makeLayout()
 
 void MainMenu::build()
 {
-    if (m_items.isEmpty()) {
-        makeLayout();
-        makeItems();
-    }
+    makeLayout();
 
-    m_p_listwidget->clear();
-
-    for (int i = 0; i < m_items.size(); ++i) {
-        MenuItem item = m_items.at(i);
-        QWidget* row = item.rowWidget();
-        auto listitem = new QListWidgetItem("", m_p_listwidget);
-        listitem->setData(Qt::UserRole, QVariant(i));
-        listitem->setSizeHint(row->sizeHint());
-        m_p_listwidget->setItemWidget(listitem, row);
-    }
+    QWidget* row = rowWidget();
+    auto listitem = new QListWidgetItem("", m_p_listwidget);
+    listitem->setSizeHint(row->sizeHint());
+    m_p_listwidget->setItemWidget(listitem, row);
 }
 
+
+QWidget* MainMenu::rowWidget() const
+{
+    Qt::Alignment text_align = Qt::AlignLeft | Qt::AlignVCenter;
+
+    auto row = new QWidget();
+    auto rowlayout = new QHBoxLayout();
+    row->setLayout(rowlayout);
+
+    auto textlayout = new QVBoxLayout();
+
+    auto title = new QLabel("About Qt");
+    title->setAlignment(text_align);
+    textlayout->addWidget(title);
+    rowlayout->addLayout(textlayout);
+    rowlayout->addStretch();
+
+    return row;
+}
 
 
 void MainMenu::menuItemClicked(QListWidgetItem* item)
@@ -77,14 +86,6 @@ void MainMenu::menuItemClicked(QListWidgetItem* item)
 bool MainMenu::event(QEvent* e)
 {
     return OpenableWidget::event(e);
-}
-
-void MainMenu::makeItems()
-{
-    m_items = {
-        MenuItem(tr("About Qt"),
-                 std::bind(&MainMenu::aboutQt, this)),
-    };
 }
 
 void MainMenu::aboutQt()
