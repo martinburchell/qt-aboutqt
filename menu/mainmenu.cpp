@@ -19,7 +19,6 @@ MainMenu::MainMenu()
     m_mainlayout = new QVBoxLayout();
     m_mainlayout->setContentsMargins(0, 0, 0, 0);
     dummy_widget->setLayout(m_mainlayout);
-    QMessageBox::aboutQt(this);
 }
 
 
@@ -66,7 +65,7 @@ void MainMenu::menuItemClicked(QListWidgetItem* item)
 {
     Q_UNUSED(item)
 
-    QMessageBox::aboutQt(this);
+    QMessageBox::aboutQt(m_p_listwidget);
     m_p_listwidget->clearSelection();
 }
 
