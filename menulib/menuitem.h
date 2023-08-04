@@ -26,14 +26,11 @@ public:
     // Item title.
     QString title() const;
 
-    // Item subtitle.
-    QString subtitle() const;
-
     // Creates and returns an (unowned) widget representing the row.
     QWidget* rowWidget(App& app) const;
 
     // The menu item has been chosen; act on it.
-    void act(App& app) const;
+    void act() const;
 
 protected:
     QString m_title;

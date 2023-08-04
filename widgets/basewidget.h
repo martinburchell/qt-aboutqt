@@ -50,7 +50,6 @@ class BaseWidget : public QWidget
     // BoxLayoutHfw and its children, for example. We have therefore moved AWAY
     // from GUI_USE_RESIZE_FOR_HEIGHT; see gui_defines.h.
     //
-    // (2) This also enables our widgets to support stylesheets; see below.
 
     Q_OBJECT
 

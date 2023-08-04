@@ -48,46 +48,20 @@ class MenuWindow : public OpenableWidget
     Q_OBJECT
 
 public:
-    MenuWindow(App& app, bool offer_search = false);
-    void setIcon(const QString& icon);
-    QString icon() const;
-
-    // Menu title. Dynamic, so that the language can be changed dynamically.
+    MenuWindow(App& app);
     virtual QString title() const = 0;
 
-    // Menu subtitle.
-    virtual QString subtitle() const;
-
-    // Returns the zero-based index of the currently selected item.
     int currentIndex() const;
 
-    // Catch generic events
     virtual bool event(QEvent* e) override;
 
 
 protected:
-    // Ensures items are recreated in full
-    void rebuild(bool rebuild_header = true);
-
-    // Make the Qt widget layout. Calls extraLayoutCreation().
     void makeLayout();
 
-    // Additional function that subclasses can override to specialize layout.
-    virtual void extraLayoutCreation() {}
-
-    // Called by the default implementation of build(), for simplicity
     virtual void makeItems() {}
 
-    // Create widgets. Called by the OpenableWidget framework prior to opening.
     void build() override;
-
-    // Called by build() as it finishes. Allows subclasses to do extra
-    // processing, e.g. emitting signals.
-    virtual void afterBuild() {}
-
-    // Load or reload the stylesheet on our widget.
-    void reloadStyleSheet();
-    void loadStyleSheet();
 
 
 public slots:
@@ -97,12 +71,8 @@ public slots:
 
 protected:
     App& m_app;
-    QString m_icon;
     bool m_top;
-    bool m_offer_search;
     QVector<MenuItem> m_items;
     QPointer<QVBoxLayout> m_mainlayout;
-    QPointer<MenuHeader> m_p_header;
-    QPointer<QLineEdit> m_search_box;
     QPointer<QListWidget> m_p_listwidget;
 };

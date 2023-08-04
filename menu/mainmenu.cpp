@@ -26,7 +26,7 @@
 #include "menulib/menuitem.h"
 
 
-MainMenu::MainMenu(App& app) : MenuWindow(app, true)
+MainMenu::MainMenu(App& app) : MenuWindow(app)
 {
 }
 

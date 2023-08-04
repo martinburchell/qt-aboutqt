@@ -59,8 +59,6 @@ void BaseWidget::resizeEvent(QResizeEvent* event)
 
 void BaseWidget::paintEvent(QPaintEvent*)
 {
-    // REQUIRED for class to support stylesheets
-    // http://www.qtcentre.org/threads/37976-Q_OBJECT-and-CSS-background-image
     QStyleOption o;
     o.initFrom(this);
     QPainter p(this);
