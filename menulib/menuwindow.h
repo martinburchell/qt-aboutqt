@@ -35,13 +35,9 @@
 #include "menulib/menuitem.h"
 #include "widgets/openablewidget.h"
 
-class MenuHeader;
-class Questionnaire;
 class QLineEdit;
 class QListWidget;
 class QListWidgetItem;
-
-// A CamCOPS menu.
 
 class MenuWindow : public OpenableWidget
 {

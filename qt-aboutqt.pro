@@ -421,7 +421,6 @@ SOURCES += \
     core/app.cpp \
     main.cpp \
     menu/mainmenu.cpp \
-    menulib/menuheader.cpp \
     menulib/menuitem.cpp \
     menulib/menuwindow.cpp \
     widgets/basewidget.cpp \
@@ -431,7 +430,6 @@ HEADERS += \
     common/dpi.h \
     core/app.h \
     menu/mainmenu.h \
-    menulib/menuheader.h \
     menulib/menuitem.h \
     menulib/menuwindow.h \
     widgets/basewidget.h \

@@ -7,7 +7,6 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QPushButton>
-#include "menulib/menuheader.h"
 
 const int BAD_INDEX = -1;
 
