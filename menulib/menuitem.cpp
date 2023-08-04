@@ -1,13 +1,7 @@
 #include "menuitem.h"
-#include <QDebug>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QPushButton>
-#include <QScopedPointer>
-#include <QSize>
-#include <QUrl>
 #include "core/app.h"
-#include "widgets/basewidget.h"
 
 MenuItem::MenuItem(const QString& title, const MenuItem::ActionFunction& func) :
     m_title(title)
@@ -22,9 +16,8 @@ QString MenuItem::title() const
 }
 
 
-QWidget* MenuItem::rowWidget(App& app) const
+QWidget* MenuItem::rowWidget() const
 {
-    Q_UNUSED(app)
     Qt::Alignment text_align = Qt::AlignLeft | Qt::AlignVCenter;
 
     auto row = new QWidget();

@@ -422,7 +422,6 @@ SOURCES += \
     main.cpp \
     menu/mainmenu.cpp \
     menulib/menuitem.cpp \
-    menulib/menuwindow.cpp \
     widgets/openablewidget.cpp
 
 HEADERS += \
@@ -430,7 +429,6 @@ HEADERS += \
     core/app.h \
     menu/mainmenu.h \
     menulib/menuitem.h \
-    menulib/menuwindow.h \
     widgets/openablewidget.h
 
 message("--- Qt-Aboutqt qmake finishing.")

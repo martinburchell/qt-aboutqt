@@ -6,7 +6,6 @@
 #include <QString>
 
 class App;
-class MenuWindow;
 class OpenableWidget;
 class QWidget;
 
@@ -27,7 +26,7 @@ public:
     QString title() const;
 
     // Creates and returns an (unowned) widget representing the row.
-    QWidget* rowWidget(App& app) const;
+    QWidget* rowWidget() const;
 
     // The menu item has been chosen; act on it.
     void act() const;

@@ -1,33 +1,25 @@
-/*
-    Copyright (C) 2012, University of Cambridge, Department of Psychiatry.
-    Created by Rudolf Cardinal (rnc1001@cam.ac.uk).
-
-    This file is part of CamCOPS.
-
-    CamCOPS is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    CamCOPS is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with CamCOPS. If not, see <https://www.gnu.org/licenses/>.
-*/
-
 #include "mainmenu.h"
 #include <QDebug>
+#include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
 #include <QMessageBox>
 #include <QSharedPointer>
 #include "core/app.h"
 #include "menulib/menuitem.h"
 
 
-MainMenu::MainMenu(App& app) : MenuWindow(app)
+MainMenu::MainMenu()
 {
+    auto dummy_layout = new QVBoxLayout();
+    dummy_layout->setContentsMargins(0, 0, 0, 0);
+    setLayout(dummy_layout);
+    auto dummy_widget = new QWidget();
+    dummy_layout->addWidget(dummy_widget);
+
+    m_mainlayout = new QVBoxLayout();
+    m_mainlayout->setContentsMargins(0, 0, 0, 0);
+    dummy_widget->setLayout(m_mainlayout);
 }
 
 
@@ -36,6 +28,64 @@ QString MainMenu::title() const
     return tr("Testing");
 }
 
+void MainMenu::makeLayout()
+{
+    m_p_listwidget = new QListWidget();
+    m_mainlayout->addWidget(m_p_listwidget);
+
+    connect(m_p_listwidget, &QListWidget::itemClicked,
+            this, &MainMenu::menuItemClicked,
+            Qt::UniqueConnection);
+    connect(m_p_listwidget, &QListWidget::itemActivated,
+            this, &MainMenu::menuItemClicked,
+            Qt::UniqueConnection);
+}
+
+
+void MainMenu::build()
+{
+    if (m_items.isEmpty()) {
+        makeLayout();
+        makeItems();
+    }
+
+    m_p_listwidget->clear();
+
+    for (int i = 0; i < m_items.size(); ++i) {
+        MenuItem item = m_items.at(i);
+        QWidget* row = item.rowWidget();
+        auto listitem = new QListWidgetItem("", m_p_listwidget);
+        listitem->setData(Qt::UserRole, QVariant(i));
+        listitem->setSizeHint(row->sizeHint());
+        m_p_listwidget->setItemWidget(listitem, row);
+    }
+}
+
+
+
+void MainMenu::menuItemClicked(QListWidgetItem* item)
+{
+    // Act on a click
+
+    const QVariant v = item->data(Qt::UserRole);
+    const int i = v.toInt();
+    if (i < 0 || i >= m_items.size()) {
+        qWarning() << Q_FUNC_INFO << "Selection out of range:" << i
+                   << "(vector size:" << m_items.size() << ")";
+        return;
+    }
+    MenuItem& m = m_items[i];
+    m.act();
+    m_p_listwidget->clearSelection();
+}
+
+
+
+
+bool MainMenu::event(QEvent* e)
+{
+    return OpenableWidget::event(e);
+}
 
 void MainMenu::makeItems()
 {
