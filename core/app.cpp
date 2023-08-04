@@ -50,9 +50,11 @@ void App::openMainWindow()
     m_p_main_window = new QMainWindow();
     m_p_window_stack = new QStackedWidget(m_p_main_window);
     m_p_hidden_stack = QSharedPointer<QStackedWidget>(new QStackedWidget());
-    m_p_main_window->setCentralWidget(m_p_window_stack);
+    OpenableWidget* menu = new MainMenu(*this);
+    menu->build();
+    m_p_main_window->setCentralWidget(menu);
 
-    recreateMainMenu();
+    //recreateMainMenu();
 
     m_p_main_window->showMaximized();
 }
