@@ -18,10 +18,6 @@
     along with CamCOPS. If not, see <https://www.gnu.org/licenses/>.
 */
 
-// #define DEBUG_OPENABLE_WIDGET_LAYOUT  // Dumps layout when widget shown
-// #define DEBUG_PRESS_D_TO_DUMP
-// #define DEBUG_RESIZE
-
 #include "openablewidget.h"
 #include <QGraphicsView>
 #include <QKeyEvent>
@@ -36,10 +32,6 @@ OpenableWidget::OpenableWidget(QWidget* parent) :
     m_escape_key_can_abort(true),
     m_escape_aborts_without_confirmation(false)
 {
-#ifdef DEBUG_OPENABLE_WIDGET_LAYOUT
-    auto showwatcher = new ShowWatcher(this, true);
-    Q_UNUSED(showwatcher)
-#endif
 }
 
 
@@ -117,15 +109,7 @@ void OpenableWidget::setEscapeKeyCanAbort(const bool esc_can_abort,
 
 void OpenableWidget::resizeEvent(QResizeEvent* event)
 {
-#ifdef DEBUG_RESIZE
-    qDebug().nospace()
-            << Q_FUNC_INFO
-            << ": resized to " << event->size()
-            << "; minimumSizeHint() " << minimumSizeHint()
-            << "; qSmartMinSize(this) " << qtlayouthelpers::qSmartMinSize(this);
-#else
     Q_UNUSED(event)
-#endif
 }
 
 
