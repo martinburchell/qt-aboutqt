@@ -19,11 +19,7 @@ MainMenu::MainMenu()
     m_mainlayout = new QVBoxLayout();
     m_mainlayout->setContentsMargins(0, 0, 0, 0);
     dummy_widget->setLayout(m_mainlayout);
-}
 
-
-void MainMenu::build()
-{
     m_p_listwidget = new QListWidget();
     m_mainlayout->addWidget(m_p_listwidget);
 
@@ -38,6 +34,7 @@ void MainMenu::build()
     auto listitem = new QListWidgetItem("", m_p_listwidget);
     listitem->setSizeHint(row->sizeHint());
     m_p_listwidget->setItemWidget(listitem, row);
+
 }
 
 
@@ -65,12 +62,6 @@ void MainMenu::menuItemClicked(QListWidgetItem* item)
 {
     Q_UNUSED(item)
 
-    QMessageBox::aboutQt(m_p_listwidget);
+    QMessageBox::aboutQt(this);
     m_p_listwidget->clearSelection();
-}
-
-
-bool MainMenu::event(QEvent* e)
-{
-    return OpenableWidget::event(e);
 }

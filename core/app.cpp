@@ -22,8 +22,7 @@ App::~App()
 int App::run()
 {
     m_p_main_window = new QMainWindow();
-    OpenableWidget* menu = new MainMenu();
-    menu->build();
+    QWidget* menu = new MainMenu();
     m_p_main_window->setCentralWidget(menu);
     m_p_main_window->showMaximized();
 

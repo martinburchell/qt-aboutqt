@@ -3,22 +3,18 @@
 #include <QSharedPointer>
 #include <QVector>
 #include <QVBoxLayout>
-#include "widgets/openablewidget.h"
+#include <QWidget>
 
 class QListWidget;
 class QListWidgetItem;
 
-class MainMenu : public OpenableWidget
+class MainMenu : public QWidget
 {
     Q_OBJECT
 
 public:
     MainMenu();
-    bool event(QEvent* e) override;
     QWidget* rowWidget() const;
-
-protected:
-    void build() override;
 
 public slots:
     void menuItemClicked(QListWidgetItem* item);

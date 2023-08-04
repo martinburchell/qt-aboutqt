@@ -417,16 +417,12 @@ android {
 # =============================================================================
 
 SOURCES += \
-    common/dpi.cpp \
     core/app.cpp \
     main.cpp \
-    menu/mainmenu.cpp \
-    widgets/openablewidget.cpp
+    menu/mainmenu.cpp
 
 HEADERS += \
-    common/dpi.h \
     core/app.h \
-    menu/mainmenu.h \
-    widgets/openablewidget.h
+    menu/mainmenu.h
 
 message("--- Qt-Aboutqt qmake finishing.")
