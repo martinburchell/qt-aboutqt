@@ -14,14 +14,10 @@ class MainMenu : public OpenableWidget
 
 public:
     MainMenu();
-    QString title() const;
     bool event(QEvent* e) override;
     QWidget* rowWidget() const;
 
 protected:
-    void makeLayout();
-
-    void aboutQt();
     void build() override;
 
 public slots:

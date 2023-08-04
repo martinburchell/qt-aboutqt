@@ -19,15 +19,11 @@ MainMenu::MainMenu()
     m_mainlayout = new QVBoxLayout();
     m_mainlayout->setContentsMargins(0, 0, 0, 0);
     dummy_widget->setLayout(m_mainlayout);
+    QMessageBox::aboutQt(this);
 }
 
 
-QString MainMenu::title() const
-{
-    return tr("Testing");
-}
-
-void MainMenu::makeLayout()
+void MainMenu::build()
 {
     m_p_listwidget = new QListWidget();
     m_mainlayout->addWidget(m_p_listwidget);
@@ -38,12 +34,6 @@ void MainMenu::makeLayout()
     connect(m_p_listwidget, &QListWidget::itemActivated,
             this, &MainMenu::menuItemClicked,
             Qt::UniqueConnection);
-}
-
-
-void MainMenu::build()
-{
-    makeLayout();
 
     QWidget* row = rowWidget();
     auto listitem = new QListWidgetItem("", m_p_listwidget);
@@ -76,19 +66,12 @@ void MainMenu::menuItemClicked(QListWidgetItem* item)
 {
     Q_UNUSED(item)
 
-    aboutQt();
+    QMessageBox::aboutQt(this);
     m_p_listwidget->clearSelection();
 }
-
-
 
 
 bool MainMenu::event(QEvent* e)
 {
     return OpenableWidget::event(e);
-}
-
-void MainMenu::aboutQt()
-{
-    QMessageBox::aboutQt(this);
 }
