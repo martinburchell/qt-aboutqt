@@ -65,17 +65,9 @@ void MainMenu::build()
 
 void MainMenu::menuItemClicked(QListWidgetItem* item)
 {
-    // Act on a click
+    Q_UNUSED(item)
 
-    const QVariant v = item->data(Qt::UserRole);
-    const int i = v.toInt();
-    if (i < 0 || i >= m_items.size()) {
-        qWarning() << Q_FUNC_INFO << "Selection out of range:" << i
-                   << "(vector size:" << m_items.size() << ")";
-        return;
-    }
-    MenuItem& m = m_items[i];
-    m.act();
+    aboutQt();
     m_p_listwidget->clearSelection();
 }
 
