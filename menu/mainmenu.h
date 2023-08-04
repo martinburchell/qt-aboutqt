@@ -16,7 +16,7 @@ class MainMenu : public OpenableWidget
 public:
     MainMenu();
     QString title() const;
-    bool event(QEvent* e);
+    bool event(QEvent* e) override;
 
 protected:
     void makeLayout();
