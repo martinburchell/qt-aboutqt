@@ -29,7 +29,6 @@
 #include <QSize>
 #include <QUrl>
 #include "core/app.h"
-#include "menulib/menuproxy.h"
 #include "menulib/menuwindow.h"
 
 
