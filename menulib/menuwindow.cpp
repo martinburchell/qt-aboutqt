@@ -17,7 +17,7 @@ MenuWindow::MenuWindow(App& app) :
     auto dummy_layout = new QVBoxLayout();
     dummy_layout->setContentsMargins(0, 0, 0, 0);
     setLayout(dummy_layout);
-    auto dummy_widget = new QWidget();  // doesn't need to be BaseWidget; contains scrolling list
+    auto dummy_widget = new QWidget();
     dummy_layout->addWidget(dummy_widget);
 
     m_mainlayout = new QVBoxLayout();
