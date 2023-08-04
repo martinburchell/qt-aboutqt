@@ -419,12 +419,10 @@ android {
 SOURCES += \
     common/dpi.cpp \
     core/app.cpp \
-    lib/errorfunc.cpp \
     main.cpp \
     menu/mainmenu.cpp \
     menulib/menuheader.cpp \
     menulib/menuitem.cpp \
-    menulib/menuproxy.cpp \
     menulib/menuwindow.cpp \
     widgets/basewidget.cpp \
     widgets/openablewidget.cpp
@@ -432,11 +430,9 @@ SOURCES += \
 HEADERS += \
     common/dpi.h \
     core/app.h \
-    lib/errorfunc.h \
     menu/mainmenu.h \
     menulib/menuheader.h \
     menulib/menuitem.h \
-    menulib/menuproxy.h \
     menulib/menuwindow.h \
     widgets/basewidget.h \
     widgets/openablewidget.h

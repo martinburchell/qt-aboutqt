@@ -178,8 +178,6 @@ void MenuWindow::menuItemClicked(QListWidgetItem* item)
         return;
     }
     MenuItem& m = m_items[i];
-    qInfo().noquote().nospace() << "Clicked: " << m.info();
-    // ACT ON IT. And clear the selection.
     m.act(m_app);
     m_p_listwidget->clearSelection();
 }
