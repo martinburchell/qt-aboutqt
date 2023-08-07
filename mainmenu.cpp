@@ -61,6 +61,6 @@ void MainMenu::menuItemClicked(QListWidgetItem* item)
 {
     Q_UNUSED(item)
 
-    QMessageBox::aboutQt(this);
+    QApplication::aboutQt();
     m_p_listwidget->clearSelection();
 }
