@@ -7,24 +7,16 @@
 #include "mainmenu.h"
 
 App::App(int& argc, char* argv[]) :
-    QApplication(argc, argv),
-    m_p_main_window(nullptr)
-{
-}
-
-
-App::~App()
-{
-    delete m_p_main_window;
+    QApplication(argc, argv){
 }
 
 
 int App::run()
 {
-    m_p_main_window = new QMainWindow();
+    auto main_window = new QMainWindow();
     QWidget* menu = new MainMenu();
-    m_p_main_window->setCentralWidget(menu);
-    m_p_main_window->showMaximized();
+    main_window->setCentralWidget(menu);
+    main_window->showMaximized();
 
     return exec();
 }

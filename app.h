@@ -20,20 +20,13 @@
 
 #pragma once
 #include <QApplication>
-#include <QMainWindow>
-#include <QPointer>
 
 
-// The main application object.
 class App : public QApplication
 {
     Q_OBJECT
 
 public:
     App(int& argc, char* argv[]);
-    ~App();
     int run();
-
-protected:
-    QPointer<QMainWindow> m_p_main_window;
 };
