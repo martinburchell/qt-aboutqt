@@ -1,7 +1,5 @@
 #pragma once
 #include <QPointer>
-#include <QSharedPointer>
-#include <QVector>
 #include <QVBoxLayout>
 #include <QWidget>
 
@@ -20,6 +18,5 @@ public slots:
     void menuItemClicked(QListWidgetItem* item);
 
 protected:
-    QPointer<QVBoxLayout> m_mainlayout;
     QPointer<QListWidget> m_p_listwidget;
 };

@@ -1,10 +1,9 @@
 #include "mainmenu.h"
-#include <QDebug>
+#include <QApplication>
 #include <QLabel>
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QMessageBox>
-#include <QSharedPointer>
 #include "app.h"
 
 
@@ -16,12 +15,12 @@ MainMenu::MainMenu()
     auto dummy_widget = new QWidget();
     dummy_layout->addWidget(dummy_widget);
 
-    m_mainlayout = new QVBoxLayout();
-    m_mainlayout->setContentsMargins(0, 0, 0, 0);
-    dummy_widget->setLayout(m_mainlayout);
+    auto mainlayout = new QVBoxLayout();
+    mainlayout->setContentsMargins(0, 0, 0, 0);
+    dummy_widget->setLayout(mainlayout);
 
     m_p_listwidget = new QListWidget();
-    m_mainlayout->addWidget(m_p_listwidget);
+    mainlayout->addWidget(m_p_listwidget);
 
     connect(m_p_listwidget, &QListWidget::itemClicked,
             this, &MainMenu::menuItemClicked,
