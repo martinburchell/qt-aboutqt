@@ -5,7 +5,7 @@
 #include <QListWidgetItem>
 #include <QMessageBox>
 #include <QSharedPointer>
-#include "core/app.h"
+#include "app.h"
 
 
 MainMenu::MainMenu()

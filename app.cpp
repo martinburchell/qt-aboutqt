@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QUuid>
 
-#include "menu/mainmenu.h"
+#include "mainmenu.h"
 
 App::App(int& argc, char* argv[]) :
     QApplication(argc, argv),

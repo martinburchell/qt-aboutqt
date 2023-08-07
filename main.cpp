@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "core/app.h"
+#include "app.h"
 
 
 #if defined __clang__  // NB defined in Qt Creator; put this first for that reason
